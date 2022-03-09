@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import Articles from "./components/Articles";
 import Topics from "./components/Topics";
 import { BrowserRouter } from "react-router-dom";
-import ArticlesByTopic from "./components/ArticlesByTopic";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
         <Topics />
         <Routes>
           <Route path="/" element={<Articles />} />
-          <Route path="/articles/:topic" element={<ArticlesByTopic />} />
+          <Route path="/articles/:topic" element={<Articles />} />
         </Routes>
       </div>
     </BrowserRouter>

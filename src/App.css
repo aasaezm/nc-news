@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-section {
+article {
   color: red;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -23,7 +23,7 @@ section {
   justify-content: center;
 }
 
-#link {
+.link {
   color: red;
   margin: 20px;
   text-transform: capitalize;
