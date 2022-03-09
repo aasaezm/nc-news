@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-section {
+article {
   color: red;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -13,14 +13,18 @@ section {
   padding: 0 10px;
   border-radius: 25px;
   display: table;
-  margin-top: 20px;
+  margin: auto;
+  margin-top: 25px;
 }
 
 .heading {
   color: green;
+  display: flex;
+  justify-content: center;
 }
 
-#link {
+.link {
   color: red;
   margin: 20px;
+  text-transform: capitalize;
 }

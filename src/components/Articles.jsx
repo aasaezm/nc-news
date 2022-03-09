@@ -1,30 +1,51 @@
 import { useState, useEffect } from "react";
 import { fetchArticles } from "../api";
+import { useParams } from "react-router-dom";
+import ArticleCard from "./ArticleCard";
+import { fetchArticlesByTopic } from "../api";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { topic } = useParams();
 
   useEffect(() => {
-    fetchArticles().then(({ articles }) => {
-      setArticles(articles);
-    });
-  }, []);
+    //When going to home page, will get undefined as useParams won't return any topic property within the object
+    if (topic === undefined) {
+      setIsLoading(true);
+      fetchArticles().then(({ articles }) => {
+        setArticles(articles);
+        setIsLoading(false);
+      });
+    } else {
+      setIsLoading(true);
+      fetchArticlesByTopic(topic).then(({ articles }) => {
+        setArticles(articles);
+        setIsLoading(false);
+      });
+    }
+  }, [topic]);
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <div>
-      {articles.map((article) => {
-        return (
-          <section key={article.title} id="article_card">
-            <p>
-              <strong>{article.title}</strong>
-            </p>
-            <p>Author: {article.author}</p>
-            <p>Topic: {article.topic}</p>
-            <p>Votes: {article.votes}</p>
-            <p>Comments: {article.comment_count}</p>
-          </section>
-        );
-      })}
+      {articles.map(
+        ({ title, article_id, author, topic, votes, comment_count }) => {
+          return (
+            <ArticleCard
+              key={article_id}
+              title={title}
+              article_id={article_id}
+              author={author}
+              topic={topic}
+              votes={votes}
+              comment_count={comment_count}
+            />
+          );
+        }
+      )}
     </div>
   );
 };
