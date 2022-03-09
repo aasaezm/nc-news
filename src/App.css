@@ -3,7 +3,7 @@
 }
 
 article {
-  color: red;
+  color: black;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
@@ -15,6 +15,11 @@ article {
   display: table;
   margin: auto;
   margin-top: 25px;
+  text-decoration: none;
+}
+
+.article_card:hover {
+  transform: scale(1.1);
 }
 
 .heading {

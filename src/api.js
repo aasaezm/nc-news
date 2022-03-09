@@ -19,3 +19,15 @@ export const fetchArticlesByTopic = (param) => {
     `https://quarki-nc-news.herokuapp.com/api/articles?topic=${param}`
   ).then((data) => data.json());
 };
+
+export const fetchArticleById = (id) => {
+  return fetch(`https://quarki-nc-news.herokuapp.com/api/articles/${id}`).then(
+    (data) => data.json()
+  );
+};
+
+export const fetchCommentsByArticle = (id) => {
+  return fetch(
+    `https://quarki-nc-news.herokuapp.com/api/articles/${id}/comments`
+  ).then((data) => data.json());
+};
