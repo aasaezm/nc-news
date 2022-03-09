@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import Articles from "./components/Articles";
 import Topics from "./components/Topics";
 import { BrowserRouter } from "react-router-dom";
+import ArticlesByTopic from "./components/ArticlesByTopic";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -10,7 +12,10 @@ function App() {
       <div className="App">
         <Header />
         <Topics />
-        <Articles />
+        <Routes>
+          <Route path="/" element={<Articles />} />
+          <Route path="/articles/:topic" element={<ArticlesByTopic />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );

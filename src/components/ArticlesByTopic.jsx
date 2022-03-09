@@ -1,14 +1,18 @@
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { fetchArticles } from "../api";
+import { fetchArticlesByTopic } from "../api";
 
-const Articles = () => {
+const ArticlesByTopic = () => {
+  const { topic: param } = useParams();
+
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetchArticles().then(({ articles }) => {
+    fetchArticlesByTopic(param).then(({ articles }) => {
       setArticles(articles);
+      console.log(articles);
     });
-  }, []);
+  }, [articles]);
 
   return (
     <div>
@@ -31,4 +35,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default ArticlesByTopic;

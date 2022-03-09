@@ -16,7 +16,7 @@ const Topics = () => {
       {/* <h2>Topics:</h2> */}
       {topics.map((topic) => {
         return (
-          <Link id="link" key={topic} to="#">
+          <Link id="link" key={topic} to={`/articles/${topic.toLowerCase()}`}>
             {topic}
           </Link>
         );

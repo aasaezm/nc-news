@@ -13,3 +13,9 @@ export const fetchTopics = () => {
       return toUpperCase(topics);
     });
 };
+
+export const fetchArticlesByTopic = (param) => {
+  return fetch(
+    `https://quarki-nc-news.herokuapp.com/api/articles?topic=${param}`
+  ).then((data) => data.json());
+};
