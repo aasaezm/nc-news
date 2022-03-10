@@ -19,3 +19,29 @@ export const fetchArticlesByTopic = (param) => {
     `https://quarki-nc-news.herokuapp.com/api/articles?topic=${param}`
   ).then((data) => data.json());
 };
+
+export const fetchArticleById = (id) => {
+  return fetch(`https://quarki-nc-news.herokuapp.com/api/articles/${id}`).then(
+    (data) => data.json()
+  );
+};
+
+export const fetchCommentsByArticle = (id) => {
+  return fetch(
+    `https://quarki-nc-news.herokuapp.com/api/articles/${id}/comments`
+  ).then((data) => data.json());
+};
+
+export const patchVote = (article_id, votes) => {
+  return fetch(
+    `https://quarki-nc-news.herokuapp.com/api/articles/${article_id}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify({ inc_votes: votes }),
+
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  ).then((response) => response.json());
+};

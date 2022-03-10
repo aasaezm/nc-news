@@ -4,6 +4,7 @@ import Articles from "./components/Articles";
 import Topics from "./components/Topics";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
+import SingleArticleCard from "./components/SingleArticleCard";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Articles />} />
           <Route path="/articles/:topic" element={<Articles />} />
+          <Route
+            path="/articles/article/:article_id"
+            element={<SingleArticleCard />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
