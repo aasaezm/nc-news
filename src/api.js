@@ -31,3 +31,17 @@ export const fetchCommentsByArticle = (id) => {
     `https://quarki-nc-news.herokuapp.com/api/articles/${id}/comments`
   ).then((data) => data.json());
 };
+
+export const patchVote = (article_id, votes) => {
+  return fetch(
+    `https://quarki-nc-news.herokuapp.com/api/articles/${article_id}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify({ inc_votes: votes }),
+
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  ).then((response) => response.json());
+};
