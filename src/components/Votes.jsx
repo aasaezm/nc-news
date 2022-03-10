@@ -9,7 +9,9 @@ const Votes = ({ votes, article_id }) => {
   const updatingVotes = (increase) => {
     setHandleVotes(increase);
 
-    patchVote(article_id, increase).then((res) => console.log(res, "messsage"));
+    patchVote(article_id, increase)
+      .then((res) => console.log(res, "messsage"))
+      .catch(console.log("There was an error"));
   };
   console.log(handleVotes, "handlevotes");
   return (
