@@ -33,3 +33,23 @@ article {
   margin: 20px;
   text-transform: capitalize;
 }
+
+.li-comments {
+  max-width: 500px;
+  float: none;
+  margin: auto;
+  /* Removes the bullet points from each item of the list  */
+  list-style: none;
+}
+
+form {
+  margin-top: 25px;
+}
+
+textarea {
+  border-radius: 15px;
+}
+
+#home {
+  margin-right: 50px;
+}

@@ -45,3 +45,27 @@ export const patchVote = (article_id, votes) => {
     }
   ).then((response) => response.json());
 };
+
+export const fetchUsers = () => {
+  return fetch("https://quarki-nc-news.herokuapp.com/api/users").then((data) =>
+    data.json()
+  );
+};
+
+export const postComment = (article_id, author, body) => {
+  return fetch(
+    `https://quarki-nc-news.herokuapp.com/api/articles/${article_id}/comments`,
+    {
+      method: "POST",
+      body: JSON.stringify({ username: author, body: body }),
+
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((obj) => {
+      return obj.postedComment;
+    });
+};

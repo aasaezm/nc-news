@@ -3,6 +3,7 @@ import { fetchArticles } from "../api";
 import { useParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import { fetchArticlesByTopic } from "../api";
+import Topics from "./Topics";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -30,23 +31,26 @@ const Articles = () => {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <div>
-      {articles.map(
-        ({ title, article_id, author, topic, votes, comment_count }) => {
-          return (
-            <ArticleCard
-              key={article_id}
-              title={title}
-              article_id={article_id}
-              author={author}
-              topic={topic}
-              votes={votes}
-              comment_count={comment_count}
-            />
-          );
-        }
-      )}
-    </div>
+    <>
+      <Topics />
+      <div>
+        {articles.map(
+          ({ title, article_id, author, topic, votes, comment_count }) => {
+            return (
+              <ArticleCard
+                key={article_id}
+                title={title}
+                article_id={article_id}
+                author={author}
+                topic={topic}
+                votes={votes}
+                comment_count={comment_count}
+              />
+            );
+          }
+        )}
+      </div>
+    </>
   );
 };
 
