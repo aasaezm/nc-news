@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { fetchCommentsByArticle } from "../api";
 import AddComment from "./AddComment";
 import { UserContext } from "../contexts/UserContext";
+import { deleteComment } from "../api";
 
 const Comments = ({ article_id, comment_count }) => {
   const [comments, setComments] = useState([]);
@@ -14,11 +15,15 @@ const Comments = ({ article_id, comment_count }) => {
     });
   }, [article_id]);
   console.log("hello");
-  console.log(comments.author);
 
-  // const handleRemoveComment = () => {
+  const handleRemoveComment = (comment_id) => {
+    const commentsWithoutRemovedComment = comments.filter(
+      (comment) => comment_id !== comment.comment_id
+    );
+    setComments(commentsWithoutRemovedComment);
 
-  // }
+    deleteComment(comment_id).then(() => console.log("hellooooo"));
+  };
 
   return (
     <div>
@@ -39,14 +44,14 @@ const Comments = ({ article_id, comment_count }) => {
                 <strong>{author}</strong> {created_at}
               </p>
               <p>{body}</p>
-              {/* <button
+              <button
                 onClick={() => {
-                  handleRemoveComment();
+                  handleRemoveComment(comment_id);
                 }}
                 hidden={isHidden}
               >
                 Delete comment
-              </button> */}
+              </button>
             </li>
           );
         })}

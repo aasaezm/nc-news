@@ -69,3 +69,13 @@ export const postComment = (article_id, author, body) => {
       return obj.postedComment;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return fetch(
+    `https://quarki-nc-news.herokuapp.com/api/comments/${comment_id}`,
+    {
+      method: "DELETE",
+      // body: JSON.stringify({ comment_id: comment_id })
+    }
+  );
+};

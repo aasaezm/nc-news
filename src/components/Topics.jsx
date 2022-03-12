@@ -16,7 +16,7 @@ const Topics = () => {
       {topics.map((topic) => {
         return (
           <Link
-            className="link"
+            className="topics"
             key={topic}
             to={`/articles/${topic.toLowerCase()}`}
           >
