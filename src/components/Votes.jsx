@@ -1,19 +1,26 @@
 import { useState } from "react";
 import { patchVote } from "../api";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
-const Votes = ({ votes, article_id }) => {
+const Votes = ({ votes, article_id, author }) => {
+  const { user, setUser } = useContext(UserContext);
   const [handleVotes, setHandleVotes] = useState(0);
   const [voteIsDisabled, setVoteIsDisabled] = useState(false);
-  const [unvoteIsDisabled, setUnvoteIsDisabled] = useState(false);
+  const [unvoteIsDisabled, setUnvoteIsDisabled] = useState(true);
 
   const updatingVotes = (increase) => {
-    setHandleVotes(increase);
+    if (user === author) {
+      return alert("Sorry, you cannot vote on your own comment");
+    } else {
+      setHandleVotes(increase);
 
-    patchVote(article_id, increase)
-      .then((res) => console.log(res, "messsage"))
-      .catch(console.log("There was an error"));
+      patchVote(article_id, increase)
+        .then((res) => console.log(res, "messsage"))
+        .catch((err) => console.log(err));
+    }
   };
-  console.log(handleVotes, "handlevotes");
+
   return (
     <section>
       Votes {handleVotes === 1 ? votes + 1 : votes}

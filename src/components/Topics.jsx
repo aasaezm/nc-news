@@ -13,7 +13,6 @@ const Topics = () => {
 
   return (
     <>
-      {/* <h2>Topics:</h2> */}
       {topics.map((topic) => {
         return (
           <Link
