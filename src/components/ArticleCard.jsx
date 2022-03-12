@@ -9,7 +9,7 @@ const ArticleCard = ({
   comment_count,
 }) => {
   return (
-    <Link to={`/articles/article/${article_id}`}>
+    <Link className="linking-card" to={`/articles/article/${article_id}`}>
       <article className="article_card">
         <p>
           <strong>{title}</strong>

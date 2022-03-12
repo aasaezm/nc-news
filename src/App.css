@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: monospace;
 }
 
 article {
@@ -28,10 +29,11 @@ article {
   justify-content: center;
 }
 
-.link {
-  color: red;
+.topics {
+  color: black;
   margin: 20px;
   text-transform: capitalize;
+  text-decoration: none;
 }
 
 .li-comments {
@@ -52,4 +54,12 @@ textarea {
 
 #home {
   margin-right: 50px;
+}
+
+.linking-card {
+  text-decoration: none;
+}
+
+Link {
+  text-decoration: none;
 }

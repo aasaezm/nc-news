@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Users = ({ users }) => {
   const { user, setUser } = useContext(UserContext);
-  //   console.log(users, "users from Users component");
+
   return (
     <>
       {users.map((user) => {
