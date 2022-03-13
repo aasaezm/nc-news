@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { fetchUsers } from "./api";
 import Nav from "./components/Nav";
 import Users from "./components/Users";
+import SortedArticles from "./components/SortedArticles";
 
 function App() {
   const [user, setUser] = useState("Sign in");
@@ -35,6 +36,10 @@ function App() {
             <Route
               path="/articles/article/:article_id"
               element={<DetailedArticleCard />}
+            />
+            <Route
+              path="/articles:?sort_by=date"
+              element={<SortedArticles />}
             />
           </Routes>
         </div>

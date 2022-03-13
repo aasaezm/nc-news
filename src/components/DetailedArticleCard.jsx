@@ -11,9 +11,8 @@ const SingleArticleCard = () => {
   const { article_id } = useParams();
 
   useEffect(() => {
-    fetchArticleById(article_id).then(({ article }) => {
+    fetchArticleById(article_id).then((article) => {
       const articleArray = [article];
-      // console.log(articleArray, "articleArray");
       setArticle(articleArray);
     });
   }, [article_id]);

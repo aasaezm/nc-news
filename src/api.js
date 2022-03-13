@@ -1,36 +1,71 @@
 import { toUpperCase } from "./helper/toUpperCase";
+import axios from "axios";
+
+const newsApi = axios.create({
+  baseURL: "https://quarki-nc-news.herokuapp.com/api",
+});
 
 export const fetchArticles = () => {
-  return fetch("https://quarki-nc-news.herokuapp.com/api/articles").then(
-    (data) => data.json()
-  );
+  return newsApi.get("articles").then((response) => {
+    return response.data.articles;
+  });
 };
+
+// export const fetchArticles = () => {
+//   return fetch("https://quarki-nc-news.herokuapp.com/api/articles").then(
+//     (data) => data.json()
+//   );
+// };
 
 export const fetchTopics = () => {
-  return fetch("https://quarki-nc-news.herokuapp.com/api/topics")
-    .then((data) => data.json())
-    .then((topics) => {
-      return toUpperCase(topics);
-    });
+  return newsApi.get("topics").then((response) => {
+    return toUpperCase(response.data);
+  });
 };
+
+// export const fetchTopics = () => {
+//   return fetch("https://quarki-nc-news.herokuapp.com/api/topics")
+//     .then((data) => data.json())
+//     .then((topics) => {
+//       return toUpperCase(topics);
+//     });
+// };
 
 export const fetchArticlesByTopic = (param) => {
-  return fetch(
-    `https://quarki-nc-news.herokuapp.com/api/articles?topic=${param}`
-  ).then((data) => data.json());
+  return newsApi.get(`articles?topic=${param}`).then((response) => {
+    return response.data.articles;
+  });
 };
+
+// export const fetchArticlesByTopic = (param) => {
+//   return fetch(
+//     `https://quarki-nc-news.herokuapp.com/api/articles?topic=${param}`
+//   ).then((data) => data.json());
+// };
 
 export const fetchArticleById = (id) => {
-  return fetch(`https://quarki-nc-news.herokuapp.com/api/articles/${id}`).then(
-    (data) => data.json()
-  );
+  return newsApi.get(`articles/${id}`).then((response) => {
+    return response.data.article;
+  });
 };
 
+// export const fetchArticleById = (id) => {
+//   return fetch(`https://quarki-nc-news.herokuapp.com/api/articles/${id}`).then(
+//     (data) => data.json()
+//   );
+// };
+
 export const fetchCommentsByArticle = (id) => {
-  return fetch(
-    `https://quarki-nc-news.herokuapp.com/api/articles/${id}/comments`
-  ).then((data) => data.json());
+  return newsApi.get(`articles/${id}/comments`).then((response) => {
+    return response.data.comments;
+  });
 };
+
+// export const fetchCommentsByArticle = (id) => {
+//   return fetch(
+//     `https://quarki-nc-news.herokuapp.com/api/articles/${id}/comments`
+//   ).then((data) => data.json());
+// };
 
 export const patchVote = (article_id, votes) => {
   return fetch(

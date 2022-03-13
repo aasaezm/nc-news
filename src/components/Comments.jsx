@@ -9,12 +9,11 @@ const Comments = ({ article_id, comment_count }) => {
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-    fetchCommentsByArticle(article_id).then(({ comments }) => {
+    fetchCommentsByArticle(article_id).then((comments) => {
       console.log(comments, "comments in Comments");
       setComments(comments);
     });
   }, [article_id]);
-  console.log("hello");
 
   const handleRemoveComment = (comment_id) => {
     const commentsWithoutRemovedComment = comments.filter(
@@ -22,7 +21,7 @@ const Comments = ({ article_id, comment_count }) => {
     );
     setComments(commentsWithoutRemovedComment);
 
-    deleteComment(comment_id).then(() => console.log("hellooooo"));
+    deleteComment(comment_id);
   };
 
   return (
@@ -46,7 +45,13 @@ const Comments = ({ article_id, comment_count }) => {
               <p>{body}</p>
               <button
                 onClick={() => {
-                  handleRemoveComment(comment_id);
+                  if (
+                    window.confirm(
+                      "Are you sure you want to delete your comment?"
+                    ) === true
+                  ) {
+                    handleRemoveComment(comment_id);
+                  }
                 }}
                 hidden={isHidden}
               >

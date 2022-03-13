@@ -6,7 +6,8 @@
 article {
   color: black;
 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
   background-color: #f1f1f1;
   float: none;
@@ -62,4 +63,11 @@ textarea {
 
 Link {
   text-decoration: none;
+}
+
+.article_card {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  padding: 30px 30px 30px 30px;
 }
