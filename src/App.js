@@ -17,7 +17,7 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetchUsers().then(({ users }) => {
+    fetchUsers().then((users) => {
       setUsers(users);
     });
   }, []);
