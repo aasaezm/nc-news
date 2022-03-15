@@ -1,7 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
 import Articles from "./components/Articles";
-import Topics from "./components/Topics";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import DetailedArticleCard from "./components/DetailedArticleCard";
@@ -10,13 +9,14 @@ import { useEffect, useState } from "react";
 import { fetchUsers } from "./api";
 import Nav from "./components/Nav";
 import Users from "./components/Users";
+import SortedArticles from "./components/SortedArticles";
 
 function App() {
   const [user, setUser] = useState("Sign in");
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetchUsers().then(({ users }) => {
+    fetchUsers().then((users) => {
       setUsers(users);
     });
   }, []);
@@ -36,6 +36,7 @@ function App() {
               path="/articles/article/:article_id"
               element={<DetailedArticleCard />}
             />
+            <Route path="/hello" element={<SortedArticles />} />
           </Routes>
         </div>
       </UserContext.Provider>

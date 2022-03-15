@@ -14,6 +14,7 @@ const ArticleCard = ({
         <p>
           <strong>{title}</strong>
         </p>
+        <hr></hr>
         <p>Author: {author}</p>
         <p>Topic: {topic}</p>
         <p>Votes: {votes}</p>

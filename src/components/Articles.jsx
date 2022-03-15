@@ -8,31 +8,68 @@ import Topics from "./Topics";
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortBy, setSortBy] = useState("created_at");
+  const [order, setOrder] = useState("DESC");
 
   const { topic } = useParams();
+  // console.log(topic, "useParams");
 
   useEffect(() => {
     //When going to home page, will get undefined as useParams won't return any topic property within the object
     if (topic === undefined) {
       setIsLoading(true);
-      fetchArticles().then(({ articles }) => {
+      fetchArticles(sortBy, order).then((articles) => {
         setArticles(articles);
         setIsLoading(false);
       });
     } else {
       setIsLoading(true);
-      fetchArticlesByTopic(topic).then(({ articles }) => {
+      fetchArticlesByTopic(sortBy, order, topic).then((articles) => {
         setArticles(articles);
         setIsLoading(false);
       });
     }
-  }, [topic]);
+  }, [topic, sortBy, order]);
+
+  const orderManager = () => {
+    if (order === "ASC") {
+      setOrder("DESC");
+    } else {
+      setOrder("ASC");
+    }
+  };
+
+  console.log(sortBy);
 
   if (isLoading) return <p>Loading...</p>;
 
   return (
     <>
       <Topics />
+      <div>
+        <select
+          id="dropdown"
+          value={sortBy}
+          onChange={(e) => {
+            setSortBy(e.target.value);
+          }}
+        >
+          <option value="created_at">Date</option>
+          <option value="votes">Votes</option>
+          <option value="comment_count">Number of comments</option>
+        </select>
+        <button onClick={orderManager}>{order}</button>
+        {/* <label class="switch">
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              setOrder(e.target.value);
+            }}
+          ></input>
+          Asc
+          <span class="slider round"></span>
+        </label> */}
+      </div>
       <div>
         {articles.map(
           ({ title, article_id, author, topic, votes, comment_count }) => {
