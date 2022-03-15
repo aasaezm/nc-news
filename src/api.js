@@ -5,10 +5,17 @@ const newsApi = axios.create({
   baseURL: "https://quarki-nc-news.herokuapp.com/api",
 });
 
-export const fetchArticles = () => {
-  return newsApi.get("articles").then((response) => {
-    return response.data.articles;
-  });
+export const fetchArticles = (sort, order) => {
+  return newsApi
+    .get("articles", {
+      params: {
+        sort_by: sort,
+        order: order,
+      },
+    })
+    .then((response) => {
+      return response.data.articles;
+    });
 };
 
 export const fetchTopics = () => {
@@ -17,10 +24,12 @@ export const fetchTopics = () => {
   });
 };
 
-export const fetchArticlesByTopic = (param) => {
-  return newsApi.get(`articles?topic=${param}`).then((response) => {
-    return response.data.articles;
-  });
+export const fetchArticlesByTopic = (sort, order, topic) => {
+  return newsApi
+    .get(`articles?topic=${topic}&sort_by=${sort}&order=${order}`)
+    .then((response) => {
+      return response.data.articles;
+    });
 };
 
 export const fetchArticleById = (id) => {

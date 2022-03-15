@@ -10,7 +10,6 @@ const Comments = ({ article_id, comment_count }) => {
 
   useEffect(() => {
     fetchCommentsByArticle(article_id).then((comments) => {
-      console.log(comments, "comments in Comments");
       setComments(comments);
     });
   }, [article_id]);

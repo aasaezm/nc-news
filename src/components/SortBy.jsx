@@ -1,9 +1,16 @@
+import { useParams, useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const SortBy = ({ topic }) => {
   console.log(topic, "Topic in Sort by");
 
-  const sorts = ["Date", "Votes", "Comment count"];
+  // const sorts = ["Date", "Votes", "Comment count"];
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { paramTopic } = useParams();
+
+  let query = searchParams.get("sort_by");
+  console.log(query, "searchParams");
+  console.log(paramTopic, "topic");
 
   if (topic === undefined) {
     return (
@@ -19,7 +26,7 @@ const SortBy = ({ topic }) => {
           );
         })} */}
         <p>Sort by:</p>
-        <Link to="/articles?sort_by=date">Date</Link>
+        <Link to="/hello">Date</Link>
         <Link to="/articles?sort_by=votes">Votes</Link>
         <Link to="/articles?sort_by=comment_count">Number of comments</Link>
       </div>
