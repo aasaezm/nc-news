@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchArticles } from "../api";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { Link } from "react-router-dom";
 
 const UserArticles = () => {
   const { user, setUser } = useContext(UserContext);
@@ -24,16 +25,18 @@ const UserArticles = () => {
       {userArticles.map((article) => {
         return (
           <>
-            <article key={article.article_id} className="article_card">
-              <p>
-                <strong>{article.title}</strong>
-              </p>
-              <hr></hr>
-              <p>Author: {article.author}</p>
-              <p>Topic: {article.topic}</p>
-              <p>Votes: {article.votes}</p>
-              <p>Comments: {article.comment_count}</p>
-            </article>
+            <Link to={`/articles/article/${article.article_id}`}>
+              <article key={article.article_id} className="article_card">
+                <p>
+                  <strong>{article.title}</strong>
+                </p>
+                <hr></hr>
+                <p>Author: {article.author}</p>
+                <p>Topic: {article.topic}</p>
+                <p>Votes: {article.votes}</p>
+                <p>Comments: {article.comment_count}</p>
+              </article>
+            </Link>
           </>
         );
       })}

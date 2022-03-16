@@ -39,8 +39,6 @@ const Articles = () => {
     }
   };
 
-  console.log(sortBy);
-
   if (isLoading) return <p>Loading...</p>;
 
   return (
