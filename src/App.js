@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { fetchUsers } from "./api";
 import Nav from "./components/Nav";
 import Users from "./components/Users";
+import UserCard from "./components/UserCard";
+import UserArticles from "./components/UserArticles";
 
 function App() {
   const [user, setUser] = useState("Sign in");
@@ -16,9 +18,12 @@ function App() {
 
   useEffect(() => {
     fetchUsers().then((users) => {
+      console.log(users);
       setUsers(users);
     });
   }, []);
+
+  console.log(user, "User in App.js");
 
   return (
     <BrowserRouter>
@@ -34,6 +39,11 @@ function App() {
             <Route
               path="/articles/article/:article_id"
               element={<DetailedArticleCard />}
+            />
+            <Route path="/users/:user" element={<UserCard users={users} />} />
+            <Route
+              path={`/users/${user}/articles`}
+              element={<UserArticles />}
             />
           </Routes>
         </div>
