@@ -11,6 +11,7 @@ import Nav from "./components/Nav";
 import Users from "./components/Users";
 import UserCard from "./components/UserCard";
 import UserArticles from "./components/UserArticles";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [user, setUser] = useState("Sign in");
@@ -18,12 +19,9 @@ function App() {
 
   useEffect(() => {
     fetchUsers().then((users) => {
-      console.log(users);
       setUsers(users);
     });
   }, []);
-
-  console.log(user, "User in App.js");
 
   return (
     <BrowserRouter>
@@ -45,6 +43,7 @@ function App() {
               path={`/users/${user}/articles`}
               element={<UserArticles />}
             />
+            <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </div>
       </UserContext.Provider>

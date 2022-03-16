@@ -4,19 +4,27 @@ import { fetchArticleById } from "../api";
 import Votes from "./Votes";
 import Comments from "./Comments";
 import Topics from "./Topics";
+import ErrorPage from "./ErrorPage";
 
 const SingleArticleCard = () => {
   const [article, setArticle] = useState([]);
+  const [error, setError] = useState(null);
 
   const { article_id } = useParams();
 
   useEffect(() => {
-    fetchArticleById(article_id).then((article) => {
-      const articleArray = [article];
-      setArticle(articleArray);
-    });
+    fetchArticleById(article_id)
+      .then((article) => {
+        const articleArray = [article];
+        setArticle(articleArray);
+      })
+      .catch((err) => {
+        setError({ err });
+        console.log(err.response.status, "hahah");
+      });
   }, [article_id]);
 
+  if (error) return <ErrorPage error={error} />;
   return (
     <>
       <Topics />
