@@ -4,30 +4,39 @@ import { useParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import { fetchArticlesByTopic } from "../api";
 import Topics from "./Topics";
+import ErrorPage from "./ErrorPage";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState("created_at");
   const [order, setOrder] = useState("DESC");
+  const [error, setError] = useState(null);
 
   const { topic } = useParams();
-  // console.log(topic, "useParams");
 
   useEffect(() => {
     //When going to home page, will get undefined as useParams won't return any topic property within the object
     if (topic === undefined) {
       setIsLoading(true);
-      fetchArticles(sortBy, order).then((articles) => {
-        setArticles(articles);
-        setIsLoading(false);
-      });
+      fetchArticles(sortBy, order)
+        .then((articles) => {
+          setArticles(articles);
+          setIsLoading(false);
+          setError(null);
+        })
+
+        .catch((err) => setError(err));
     } else {
       setIsLoading(true);
-      fetchArticlesByTopic(sortBy, order, topic).then((articles) => {
-        setArticles(articles);
-        setIsLoading(false);
-      });
+      fetchArticlesByTopic(sortBy, order, topic)
+        .then((articles) => {
+          setArticles(articles);
+          setIsLoading(false);
+          setError(null);
+        })
+
+        .catch((err) => setError(err));
     }
   }, [topic, sortBy, order]);
 
@@ -39,7 +48,9 @@ const Articles = () => {
     }
   };
 
-  console.log(sortBy);
+  if (error) {
+    return <ErrorPage />;
+  }
 
   if (isLoading) return <p>Loading...</p>;
 

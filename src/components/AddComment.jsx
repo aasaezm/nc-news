@@ -1,4 +1,4 @@
-import { fetchCommentsByArticle, postComment } from "../api";
+import { postComment } from "../api";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 

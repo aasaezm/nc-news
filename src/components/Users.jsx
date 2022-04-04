@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import { useState } from "react";
 
 const Users = ({ users }) => {
   const { user, setUser } = useContext(UserContext);
+  // console.log(user, "User");
 
   return (
     <>
@@ -12,13 +12,14 @@ const Users = ({ users }) => {
         return (
           <div key={user.username}>
             <Link
-              to="/"
+              to={`/users/${user.username}`}
               onClick={() => {
                 setUser(user.username);
               }}
             >
               {user.username}
             </Link>
+            <img src={user.avatar_url} alt="user profile avatar" />
           </div>
         );
       })}

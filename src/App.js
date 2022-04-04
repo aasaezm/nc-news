@@ -9,6 +9,9 @@ import { useEffect, useState } from "react";
 import { fetchUsers } from "./api";
 import Nav from "./components/Nav";
 import Users from "./components/Users";
+import UserCard from "./components/UserCard";
+import UserArticles from "./components/UserArticles";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [user, setUser] = useState("Sign in");
@@ -35,6 +38,12 @@ function App() {
               path="/articles/article/:article_id"
               element={<DetailedArticleCard />}
             />
+            <Route path="/users/:user" element={<UserCard users={users} />} />
+            <Route
+              path={`/users/${user}/articles`}
+              element={<UserArticles />}
+            />
+            <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </div>
       </UserContext.Provider>
