@@ -2,7 +2,7 @@ import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 const UserCard = ({ users }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const specficUser = users.filter((person) => person.username === user);
   console.log(specficUser, "specific User");

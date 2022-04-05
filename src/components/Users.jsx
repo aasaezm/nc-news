@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 const Users = ({ users }) => {
-  const { user, setUser } = useContext(UserContext);
-  // console.log(user, "User");
+  const { setUser } = useContext(UserContext);
 
   return (
     <>
