@@ -132,3 +132,59 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* User card */
+
+/* .userCard {
+  max-width: 300px;
+  max-height: 300px;
+  text-align: center;
+} */
+
+.userImage {
+  width: 150px;
+  height: auto;
+}
+
+/* User list */
+
+.userList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.usernameInList {
+  align-content: center;
+}
+
+.container {
+  border: 3px solid black;
+  border-radius: 25px;
+  padding: 10px;
+  max-width: 100px;
+  max-height: 100px;
+  padding: 25px;
+}
+
+.imageSignIn {
+  max-width: 70%;
+  height: auto;
+}
+
+/* .topics-nav {
+  display: flex;
+}
+
+.sort-bar {
+  display: flex;
+} */
+
+.top {
+  display: flex;
+  margin: 20px;
+  align-items: center;
+  justify-content: space-around;
+}

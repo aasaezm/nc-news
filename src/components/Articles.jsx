@@ -57,7 +57,7 @@ const Articles = () => {
   return (
     <>
       <Topics />
-      <div>
+      <div className="sort-bar">
         <select
           id="dropdown"
           value={sortBy}
