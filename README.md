@@ -45,6 +45,7 @@ Run `npm start` to interact with app
 ## Technologies
 The following technologies have been used to build the app:
 * React
+* HTML
 * CSS
 * Axios
 
