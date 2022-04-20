@@ -13,17 +13,19 @@ const Topics = () => {
 
   return (
     <>
-      {topics.map((topic) => {
-        return (
-          <Link
-            className="topics"
-            key={topic}
-            to={`/articles/${topic.toLowerCase()}`}
-          >
-            {topic}
-          </Link>
-        );
-      })}
+      <div className="topics-nav">
+        {topics.map((topic) => {
+          return (
+            <Link
+              className="topics"
+              key={topic}
+              to={`/articles/${topic.toLowerCase()}`}
+            >
+              {topic}
+            </Link>
+          );
+        })}
+      </div>
     </>
   );
 };

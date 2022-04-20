@@ -6,7 +6,7 @@ import Comments from "./Comments";
 import Topics from "./Topics";
 import ErrorPage from "./ErrorPage";
 
-const SingleArticleCard = () => {
+const DetailedArticleCard = () => {
   const [article, setArticle] = useState([]);
   const [error, setError] = useState(null);
 
@@ -42,7 +42,7 @@ const SingleArticleCard = () => {
           }) => {
             return (
               <section key={article_id}>
-                <article>
+                <article className="detailed_article_card">
                   <h2>{title}</h2>
                   <p>
                     Posted by {author} on {created_at}
@@ -67,4 +67,4 @@ const SingleArticleCard = () => {
   );
 };
 
-export default SingleArticleCard;
+export default DetailedArticleCard;

@@ -2,44 +2,45 @@ import { useState, useEffect } from "react";
 import { fetchArticles } from "../api";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { Link } from "react-router-dom";
+import ArticleCard from "./ArticleCard";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const UserArticles = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [userArticles, setUserArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetchArticles().then((articles) => {
-      //   const filteredArticles = articles.filter(
-      //     (article) => article.author === user
-      //   );
-      //   console.log(filteredArticles, "articles by author");
-      setUserArticles(articles.filter((article) => article.author === user));
+      const articlesByUser = articles.filter(
+        (article) => article.author === user
+      );
+      setUserArticles(articlesByUser);
+      setIsLoading(false);
     });
   }, []);
 
-  console.log(userArticles);
+  if (isLoading)
+    return <ClipLoader color={"black"} loading={isLoading} size={100} />;
 
   return (
     <div>
-      {userArticles.map((article) => {
-        return (
-          <>
-            <Link to={`/articles/article/${article.article_id}`}>
-              <article key={article.article_id} className="article_card">
-                <p>
-                  <strong>{article.title}</strong>
-                </p>
-                <hr></hr>
-                <p>Author: {article.author}</p>
-                <p>Topic: {article.topic}</p>
-                <p>Votes: {article.votes}</p>
-                <p>Comments: {article.comment_count}</p>
-              </article>
-            </Link>
-          </>
-        );
-      })}
+      {userArticles.map(
+        ({ title, article_id, author, topic, votes, comment_count }) => {
+          return (
+            <ArticleCard
+              key={article_id}
+              title={title}
+              article_id={article_id}
+              author={author}
+              topic={topic}
+              votes={votes}
+              comment_count={comment_count}
+            />
+          );
+        }
+      )}
     </div>
   );
 };

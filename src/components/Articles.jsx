@@ -5,6 +5,7 @@ import ArticleCard from "./ArticleCard";
 import { fetchArticlesByTopic } from "../api";
 import Topics from "./Topics";
 import ErrorPage from "./ErrorPage";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -52,12 +53,13 @@ const Articles = () => {
     return <ErrorPage />;
   }
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return <ClipLoader color={"black"} loading={isLoading} size={100} />;
 
   return (
     <>
       <Topics />
-      <div>
+      <div className="sort-bar">
         <select
           id="dropdown"
           value={sortBy}
@@ -70,16 +72,6 @@ const Articles = () => {
           <option value="comment_count">Number of comments</option>
         </select>
         <button onClick={orderManager}>{order}</button>
-        {/* <label class="switch">
-          <input
-            type="checkbox"
-            onChange={(e) => {
-              setOrder(e.target.value);
-            }}
-          ></input>
-          Asc
-          <span class="slider round"></span>
-        </label> */}
       </div>
       <div>
         {articles.map(
