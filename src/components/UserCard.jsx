@@ -5,8 +5,6 @@ const UserCard = ({ users }) => {
   const { user } = useContext(UserContext);
 
   const specficUser = users.filter((person) => person.username === user);
-  console.log(specficUser, "specific User");
-  console.log(user, "wewewewe");
   return (
     <div>
       {specficUser.map((user) => {

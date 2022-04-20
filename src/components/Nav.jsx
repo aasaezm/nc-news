@@ -10,7 +10,7 @@ const Nav = () => {
     <div className="top">
       <div className="top_page">
         <Link id="home" to="/">
-          <AiFillHome color="black" size="1.5rem" />
+          <AiFillHome color="black" size="2.5em" />
         </Link>
         <Link id="user" to="/users">
           {user}

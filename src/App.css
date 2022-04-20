@@ -5,10 +5,7 @@
 
 article {
   color: black;
-
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
   background-color: #f1f1f1;
   float: none;
   width: 25%;
@@ -28,6 +25,7 @@ article {
   color: green;
   display: flex;
   justify-content: center;
+  font-size: xx-large;
 }
 
 .topics {
@@ -35,6 +33,11 @@ article {
   margin: 20px;
   text-transform: capitalize;
   text-decoration: none;
+  font-size: large;
+}
+
+.topics-nav {
+  padding: 20px;
 }
 
 .li-comments {
@@ -133,14 +136,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/* User card */
-
-/* .userCard {
-  max-width: 300px;
-  max-height: 300px;
-  text-align: center;
-} */
-
 .userImage {
   width: 150px;
   height: auto;
@@ -158,33 +153,34 @@ input:checked + .slider:before {
 
 .usernameInList {
   align-content: center;
+  margin: 15px;
 }
 
 .container {
   border: 3px solid black;
   border-radius: 25px;
   padding: 10px;
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 150px;
+  max-height: 150px;
   padding: 25px;
+  margin: 20px;
 }
 
 .imageSignIn {
-  max-width: 70%;
+  max-width: 40%;
   height: auto;
 }
 
-/* .topics-nav {
-  display: flex;
-}
-
-.sort-bar {
-  display: flex;
-} */
-
 .top {
   display: flex;
-  margin: 20px;
+  margin: 25px;
   align-items: center;
   justify-content: space-around;
+}
+
+.detailed_article_card {
+  max-width: 100em;
+}
+
+@media (min-width: 30em) {
 }

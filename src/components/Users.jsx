@@ -11,15 +11,16 @@ const Users = ({ users }) => {
         return (
           <div className="userList" key={user.username}>
             <div className="container">
-              <Link
-                className="usernameInList"
-                to={`/users/${user.username}`}
-                onClick={() => {
-                  setUser(user.username);
-                }}
-              >
-                {user.username}
-              </Link>
+              <div className="usernameInList">
+                <Link
+                  to={`/users/${user.username}`}
+                  onClick={() => {
+                    setUser(user.username);
+                  }}
+                >
+                  {user.username}
+                </Link>
+              </div>
               <img
                 className="imageSignIn"
                 src={user.avatar_url}
