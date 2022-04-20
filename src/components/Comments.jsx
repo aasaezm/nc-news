@@ -6,7 +6,7 @@ import { deleteComment } from "../api";
 
 const Comments = ({ article_id, comment_count }) => {
   const [comments, setComments] = useState([]);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     fetchCommentsByArticle(article_id).then((comments) => {

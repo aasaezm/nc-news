@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 
 const AddComment = ({ article_id, setComments, comments }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [textValue, setTextValue] = useState();
   const [isPosting, setIsPosting] = useState(false);
 

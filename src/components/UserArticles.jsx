@@ -19,7 +19,7 @@ const UserArticles = () => {
       setUserArticles(articlesByUser);
       setIsLoading(false);
     });
-  }, []);
+  }, [user]);
 
   if (isLoading)
     return <ClipLoader color={"black"} loading={isLoading} size={100} />;
