@@ -11,6 +11,8 @@ The aim of this project is to demonstrate some of the skills learnt during North
 * Error handling
 * API requests and handling/displaying data
 
+A hosted version of the app can be found on: ([https://quarki-nc-news.netlify.app/](https://quarki-nc-news.netlify.app/))
+
 ## Functionality 
 
 Interacting with the API, the app allows you to:
