@@ -20,7 +20,6 @@ const DetailedArticleCard = () => {
       })
       .catch((err) => {
         setError({ err });
-        console.log(err.response.status, "hahah");
       });
   }, [article_id]);
 
