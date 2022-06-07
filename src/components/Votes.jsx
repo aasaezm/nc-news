@@ -17,7 +17,6 @@ const Votes = ({ votes, article_id, author }) => {
 
   return (
     <section>
-      Votes {handleVotes}
       <button
         onClick={() => {
           if (user !== author) {
@@ -27,13 +26,15 @@ const Votes = ({ votes, article_id, author }) => {
               ? setUnvoteIsDisabled(false)
               : setVoteIsDisabled(true);
           } else {
-            alert("Sorry, you cannot vote on your own comment");
+            alert("Sorry, you cannot vote on your own article");
           }
         }}
         disabled={voteIsDisabled}
       >
         👍
       </button>
+
+      {handleVotes}
       <button
         onClick={() => {
           if (user !== author) {
@@ -43,7 +44,7 @@ const Votes = ({ votes, article_id, author }) => {
               ? setVoteIsDisabled(false)
               : setUnvoteIsDisabled(true);
           } else {
-            alert("Sorry, you cannot vote on your own comment");
+            alert("Sorry, you cannot vote on your own article");
           }
         }}
         disabled={unvoteIsDisabled}
