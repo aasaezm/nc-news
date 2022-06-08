@@ -11,7 +11,7 @@ article {
   width: 25%;
   padding: 0 10px;
   border-radius: 25px;
-  display: table;
+  /* display: table; */
   margin: auto;
   margin-top: 25px;
   text-decoration: none;
@@ -141,29 +141,53 @@ input:checked + .slider:before {
   height: auto;
 }
 
-/* User list */
+/* -------- User list -------- */
+
+.userContainer {
+  border: 3px solid black;
+  border-radius: 25px;
+  /* padding: 20px; */
+  /* max-width: 50%; */
+  /* max-height: 150px; */
+  padding: 20px;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+}
 
 .userList {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 50px;
+  border: 3px solid red;
+  border-radius: 25px;
+  align-items: center;
+  justify-content: center;
+  max-height: 50%;
+  max-width: 50%;
+  /* display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: 20px 0;
+  border: 1px rgba(218, 218, 218, 0.7) solid;
+  border-radius: 5px; */
 }
+
+/* .userList:nth-of-type(2) {
+  height: 100px;
+  width: 100px;
+  align-self: center;
+  justify-self: center;
+} */
 
 .usernameInList {
   align-content: center;
   margin: 15px;
-}
-
-.container {
-  border: 3px solid black;
-  border-radius: 25px;
-  padding: 10px;
-  max-width: 150px;
-  max-height: 150px;
-  padding: 25px;
-  margin: 20px;
 }
 
 .imageSignIn {
@@ -182,5 +206,11 @@ input:checked + .slider:before {
   max-width: 100em;
 }
 
-@media (min-width: 30em) {
+@media (max-width: 500px) {
+  .userContainer {
+    grid-template-columns: 1fr;
+    background-color: red;
+    /* grid-template-rows: repeat(2, 1fr);
+  gap: 20px; */
+  }
 }

@@ -5,44 +5,51 @@ import { UserContext } from "../contexts/UserContext";
 
 const Votes = ({ votes, article_id, author }) => {
   const { user, setUser } = useContext(UserContext);
-  const [handleVotes, setHandleVotes] = useState(0);
+  const [handleVotes, setHandleVotes] = useState(votes);
   const [voteIsDisabled, setVoteIsDisabled] = useState(false);
-  const [unvoteIsDisabled, setUnvoteIsDisabled] = useState(true);
+  const [unvoteIsDisabled, setUnvoteIsDisabled] = useState(false);
 
   const updatingVotes = (increase) => {
-    if (user === author) {
-      return alert("Sorry, you cannot vote on your own comment");
-    } else {
-      setHandleVotes(increase);
-
-      patchVote(article_id, increase)
-        .then((res) => console.log(res, "messsage"))
-        .catch((err) => console.log(err));
-    }
+    patchVote(article_id, increase)
+      // .then((res) => console.log(res, "message"))
+      .catch((err) => console.log(err));
   };
 
   return (
     <section>
-      Votes {handleVotes === 1 ? votes + 1 : votes}
       <button
         onClick={() => {
-          updatingVotes(1);
-          setVoteIsDisabled(true);
-          setUnvoteIsDisabled(false);
+          if (user !== author) {
+            setHandleVotes(handleVotes + 1);
+            updatingVotes(1);
+            unvoteIsDisabled === true
+              ? setUnvoteIsDisabled(false)
+              : setVoteIsDisabled(true);
+          } else {
+            alert("Sorry, you cannot vote on your own article");
+          }
         }}
         disabled={voteIsDisabled}
       >
-        ✔️
+        👍
       </button>
+
+      {handleVotes}
       <button
         onClick={() => {
-          updatingVotes(-1);
-          setUnvoteIsDisabled(true);
-          setVoteIsDisabled(false);
+          if (user !== author) {
+            setHandleVotes(handleVotes - 1);
+            updatingVotes(-1);
+            voteIsDisabled === true
+              ? setVoteIsDisabled(false)
+              : setUnvoteIsDisabled(true);
+          } else {
+            alert("Sorry, you cannot vote on your own article");
+          }
         }}
         disabled={unvoteIsDisabled}
       >
-        ❌
+        👎
       </button>
     </section>
   );
