@@ -2,7 +2,7 @@ import { toUpperCase } from "./helper/toUpperCase";
 import axios from "axios";
 
 const newsApi = axios.create({
-  baseURL: "https://quarki-nc-news.herokuapp.com/api",
+  baseURL: "https://nc-news-h3vv.onrender.com/api",
 });
 
 export const fetchArticles = (sort, order) => {
