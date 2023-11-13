@@ -22,7 +22,7 @@ article {
 }
 
 .heading {
-  color: green;
+  color: red;
   display: flex;
   justify-content: center;
   font-size: xx-large;
