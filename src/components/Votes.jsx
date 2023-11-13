@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
 const Votes = ({ votes, article_id, author }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [handleVotes, setHandleVotes] = useState(votes);
   const [voteIsDisabled, setVoteIsDisabled] = useState(false);
   const [unvoteIsDisabled, setUnvoteIsDisabled] = useState(false);
